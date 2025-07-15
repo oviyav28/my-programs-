@@ -26,7 +26,7 @@
 <body>
   <h1>Machine Learning Lab Programs</h1>
 
-  <h2>Program 4 – Load and Explore CSV/Excel Data Using Pandas</h2>
+  <h2> 4 – Load and Explore CSV/Excel Data Using Pandas</h2>
   <pre>
 import pandas as pd
 
@@ -65,7 +65,7 @@ print(data_excel.dtypes)
   </pre>
   </pre>
 
-  <h2>Program 5 – Visualize Dataset with Matplotlib (Scatter & Bar Plots)</h2>
+  <h2> 5 – Visualize Dataset with Matplotlib </h2>
   <pre>
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -99,7 +99,7 @@ plt.show()
   </pre>
   </pre>
 
-  <h2>Program 6 – Handle Missing Data, Encode Categorical Variables, Feature Scaling</h2>
+  <h2> 6 – Handle Missing Data, Encode Categorical Variables, Feature Scaling</h2>
   <pre>
 import pandas as pd
 from sklearn.impute import SimpleImputer
@@ -136,39 +136,7 @@ Scaled numeric data:")
 print(scaled_df)
   </pre>
   </pre>
-
-  <h2>Program 7 – k-NN Classifier using scikit-learn</h2>
-  <pre>
-import numpy as np
-from sklearn.model_selection import train_test_split
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.metrics import accuracy_score
-
-X = np.array([[80, 75], [95, 90], [60, 50], [45, 30], [30, 40], [85, 95], [70, 60], [50, 55], [40, 45], [60, 70]])
-y = np.array([1, 1, 0, 0, 0, 1, 0, 1, 0, 1])
-
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
-knn = KNeighborsClassifier(n_neighbors=3)
-knn.fit(X_train, y_train)
-
-y_pred = knn.predict(X_test)
-accuracy = accuracy_score(y_test, y_pred)
-print("Accuracy on the test set: {:.2f}".format(accuracy))
-
-exam_score1 = float(input("Enter Exam Score 1: "))
-exam_score2 = float(input("Enter Exam Score 2: "))
-user_input = np.array([[exam_score1, exam_score2]])
-predicted_outcome = knn.predict(user_input)
-
-if predicted_outcome[0] == 1:
-    print("Based on the exam scores provided, the student is predicted to pass.")
-else:
-    print("Based on the exam scores provided, the student is predicted to fail.")
-  </pre>
-  </pre>
-
-  <h2>Program 8 – House Price Prediction using Linear Regression</h2>
+  <h2> 8 – House Price Prediction </h2>
   <pre>
 import numpy as np
 from sklearn.linear_model import LinearRegression
@@ -195,7 +163,7 @@ predicted_price = model.predict(new_data)
 print("Predicted price for a house with size {:.1f} sqft and {} bedrooms: Rs. {:.2f}".format(size, bedrooms, predicted_price[0]))
   </pre>
 
-  <h2>Program 9 – Decision Tree Classifier for Fruit Classification</h2>
+  <h2>9 – Decision Tree Classifier for Fruit Classification</h2>
   <pre>
 import numpy as np
 from sklearn.tree import DecisionTreeClassifier, plot_tree
@@ -221,7 +189,7 @@ plot_tree(clf, filled=True, feature_names=['Weight', 'Texture'], class_names=np.
 plt.show()
   </pre>
 
-  <h2>Program 10 – K-Means Clustering & Cluster Centers</h2>
+  <h2>10 – K-Means Clustering & Cluster Centers</h2>
   <pre>
 import numpy as np
 import matplotlib.pyplot as plt
