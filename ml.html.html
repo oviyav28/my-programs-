@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Machine Learning Lab Programs</title>
+  <style>
+    body {
+      font-family: monospace;
+      background-color: #f7f7f7;
+      padding: 20px;
+    }
+    h2 {
+      background: #333;
+      color: #fff;
+      padding: 10px;
+    }
+    pre {
+      background: #fff;
+      padding: 15px;
+      border-left: 5px solid #333;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>Machine Learning Lab Programs</h1>
+
+  <h2>Program 4 – Load and Explore CSV/Excel Data Using Pandas</h2>
+  <pre>
+import pandas as pd
+
+# Define file paths
+csv_file_path = 'C:\ML_Projects\sample_data.csv'
+excel_file_path = 'C:\ML_Projects\sample_data.xlsx'
+
+# Load CSV file
+data_csv = pd.read_csv(csv_file_path)
+print("CSV File Data:")
+print(data_csv)
+
+# Load Excel file
+data_excel = pd.read_excel(excel_file_path)
+print("
+Excel File Data:")
+print(data_excel)
+
+# Basic Data Exploration
+print("
+CSV Data Description:")
+print(data_csv.describe())
+
+print("
+Excel Data Description:")
+print(data_excel.describe())
+
+# Display data types
+print("
+CSV Data Types:")
+print(data_csv.dtypes)
+
+print("
+Excel Data Types:")
+print(data_excel.dtypes)
+  </pre>
+  </pre>
+
+  <h2>Program 5 – Visualize Dataset with Matplotlib (Scatter & Bar Plots)</h2>
+  <pre>
+import pandas as pd
+import matplotlib.pyplot as plt
+
+data = pd.read_csv('C:\ML_Projects\study_data.csv')
+
+# Scatter plot
+plt.figure(figsize=(14, 7))
+plt.subplot(1, 2, 1)
+plt.scatter(data['Study Hours'], data['Exam Score'], color='dodgerblue', edgecolor='k', alpha=0.7)
+plt.title('Study Hours vs. Exam Scores')
+plt.xlabel('Study Hours')
+plt.ylabel('Exam Scores')
+plt.grid(True)
+
+# Bar chart
+bins = [0, 2, 4, 6, 8, 10, 12]
+labels = ['0-2', '2-4', '4-6', '6-8', '8-10', '10-12']
+data['Study Hour Range'] = pd.cut(data['Study Hours'], bins=bins, labels=labels, right=False)
+grouped_data = data.groupby('Study Hour Range')['Exam Score'].mean()
+
+plt.subplot(1, 2, 2)
+grouped_data.plot(kind='bar', color='salmon')
+plt.title('Average Exam Score by Study Hour Range')
+plt.xlabel('Study Hour Range')
+plt.ylabel('Average Exam Score')
+plt.xticks(rotation=0)
+
+plt.tight_layout()
+plt.show()
+  </pre>
+  </pre>
+
+  <h2>Program 6 – Handle Missing Data, Encode Categorical Variables, Feature Scaling</h2>
+  <pre>
+import pandas as pd
+from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import OneHotEncoder, StandardScaler
+
+# Create dummy data
+data = {
+    'Age': [25, 30, None, 28, 35],
+    'Gender': ['Female', 'Male', 'Male', 'Female', 'Male'],
+    'Income': [50000, 60000, 45000, None, 70000]
+}
+df = pd.DataFrame(data)
+
+# Handle missing values
+imputer = SimpleImputer(strategy='mean')
+df[['Age', 'Income']] = imputer.fit_transform(df[['Age', 'Income']])
+print("Data after handling missing values:")
+print(df)
+
+# Encode categorical variables
+encoder = OneHotEncoder()
+encoded_data = encoder.fit_transform(df[['Gender']]).toarray()
+encoded_df = pd.DataFrame(encoded_data, columns=encoder.get_feature_names_out(['Gender']))
+print("
+Encoded categorical data:")
+print(encoded_df)
+
+# Feature scaling
+scaler = StandardScaler()
+scaled_data = scaler.fit_transform(df[['Age', 'Income']])
+scaled_df = pd.DataFrame(scaled_data, columns=['Scaled Age', 'Scaled Income'])
+print("
+Scaled numeric data:")
+print(scaled_df)
+  </pre>
+  </pre>
+
+  <h2>Program 7 – k-NN Classifier using scikit-learn</h2>
+  <pre>
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import accuracy_score
+
+X = np.array([[80, 75], [95, 90], [60, 50], [45, 30], [30, 40], [85, 95], [70, 60], [50, 55], [40, 45], [60, 70]])
+y = np.array([1, 1, 0, 0, 0, 1, 0, 1, 0, 1])
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+knn = KNeighborsClassifier(n_neighbors=3)
+knn.fit(X_train, y_train)
+
+y_pred = knn.predict(X_test)
+accuracy = accuracy_score(y_test, y_pred)
+print("Accuracy on the test set: {:.2f}".format(accuracy))
+
+exam_score1 = float(input("Enter Exam Score 1: "))
+exam_score2 = float(input("Enter Exam Score 2: "))
+user_input = np.array([[exam_score1, exam_score2]])
+predicted_outcome = knn.predict(user_input)
+
+if predicted_outcome[0] == 1:
+    print("Based on the exam scores provided, the student is predicted to pass.")
+else:
+    print("Based on the exam scores provided, the student is predicted to fail.")
+  </pre>
+  </pre>
+
+  <h2>Program 8 – House Price Prediction using Linear Regression</h2>
+  <pre>
+import numpy as np
+from sklearn.linear_model import LinearRegression
+
+# Dummy house price prediction data: features (house size, number of bedrooms)
+X = np.array([[1000, 2], [1500, 3], [1200, 2], [1800, 4], [900, 2], [2000, 3]])
+y = np.array([300000, 400000, 350000, 500000, 280000, 450000])
+
+# Initialize the Linear Regression model
+model = LinearRegression()
+
+# Train the model on the dataset
+model.fit(X, y)
+
+# Take input from the user for new house data
+size = float(input("Enter the size of the house in sqft: "))
+bedrooms = int(input("Enter the number of bedrooms: "))
+new_data = np.array([[size, bedrooms]])
+
+# Predict the price for the new house data
+predicted_price = model.predict(new_data)
+
+# Print the predicted price
+print("Predicted price for a house with size {:.1f} sqft and {} bedrooms: Rs. {:.2f}".format(size, bedrooms, predicted_price[0]))
+  </pre>
+
+  <h2>Program 9 – Decision Tree Classifier for Fruit Classification</h2>
+  <pre>
+import numpy as np
+from sklearn.tree import DecisionTreeClassifier, plot_tree
+from sklearn.tree import export_text
+import matplotlib.pyplot as plt
+
+# Custom dummy data for fruit classification
+# Features: [Weight, Texture] → Target: [Fruit Type]
+X = np.array([[150, 0], [170, 1], [120, 0], [140, 1], [200, 1], [130, 0]])
+y = np.array(['Apple', 'Orange', 'Apple', 'Orange', 'Melon', 'Apple'])
+
+# Initialize the Decision Tree Classifier
+clf = DecisionTreeClassifier(random_state=42)
+clf.fit(X, y)
+
+# Visualize the Decision Tree splits
+tree_rules = export_text(clf, feature_names=['Weight', 'Texture'])
+print("Decision Tree Classifier Rules:\n" + tree_rules)
+
+# Plot the Decision Tree
+plt.figure(figsize=(10, 6))
+plot_tree(clf, filled=True, feature_names=['Weight', 'Texture'], class_names=np.unique(y))
+plt.show()
+  </pre>
+
+  <h2>Program 10 – K-Means Clustering & Cluster Centers</h2>
+  <pre>
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+
+# Input data: [Age, Income]
+X = np.array([[30, 50000], [35, 60000], [40, 80000], [25, 30000], [45, 100000],
+              [20, 20000], [50, 120000], [55, 150000], [60, 140000], [28, 40000]])
+
+# Apply KMeans clustering
+kmeans = KMeans(n_clusters=3, random_state=0)
+kmeans.fit(X)
+
+# Output labels and centers
+labels = kmeans.labels_
+centers = kmeans.cluster_centers_
+print("Cluster labels:", labels)
+print("Cluster centers:
+", centers)
+
+# Visualize the clusters
+plt.figure(figsize=(8, 6))
+plt.scatter(X[:, 0], X[:, 1], c=labels, cmap='viridis', s=100, alpha=0.8)
+plt.scatter(centers[:, 0], centers[:, 1], c='red', s=200, marker='X', label='Centroids')
+plt.xlabel('Age')
+plt.ylabel('Income')
+plt.title('K-Means Clustering of Customers')
+plt.legend()
+plt.grid(True)
+plt.show()
+  </pre>
+  </pre>
+</body>
+</html>
