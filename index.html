@@ -2,126 +2,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Android Lab Programs</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Programs</title>
   <style>
-    body { font-family: monospace; background: #f5f5f5; padding: 20px; }
-    h2 { background: #4CAF50; color: white; padding: 10px; }
-    pre { background: #fff; padding: 15px; border-left: 4px solid #4CAF50; overflow-x: auto; }
-    a { text-decoration: none; color: #4CAF50; font-weight: bold; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      padding: 40px;
+      text-align: center;
+    }
+    h1 {
+      margin-bottom: 30px;
+    }
+    a.button {
+      display: inline-block;
+      padding: 15px 30px;
+      margin: 10px;
+      background: #333;
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      border-radius: 8px;
+    }
+    a.button:hover {
+      background: #555;
+    }
   </style>
 </head>
 <body>
-  <h1>Android Lab Programs</h1>
-
-  <h2>Program 5: Custom Designed Opening Screen</h2>
-  <pre>
-getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent i = new Intent(Program5.this, Screen.class);
-                startActivity(i);
-                finish();
-            }
-        }, SPLASH_SCREEN_TIME_OUT);
-  </pre>
-
-  <h2>Program 7: Create Menu in Application</h2>
-  <pre>
-@Override
-public boolean onCreatePanelMenu(int featureId, @NonNull Menu menu) {
-    MenuInflater inflater = getMenuInflater();
-    inflater.inflate(R.menu.menus, menu);
-    return true;
-}
-
-@Override
-public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-    if(item.getItemId() == R.id.php) {
-        Toast.makeText(this, "Php Page", Toast.LENGTH_SHORT).show();
-    }
-    if(item.getItemId() == R.id.java) {
-        Toast.makeText(this, "Java Page", Toast.LENGTH_SHORT).show();
-    }
-    if(item.getItemId() == R.id.csharp) {
-        Toast.makeText(this, "C# Page", Toast.LENGTH_SHORT).show();
-    }
-    return super.onOptionsItemSelected(item);
-}
-  </pre>
-
-  <h2>Program 8: Read and Write Local Data</h2>
-  <pre>
-public void writeFile(){
-    String textToSave = inputField.getText().toString();
-    try {
-        FileOutputStream fileOutputStream = openFileOutput("BCA.txt", MODE_PRIVATE);
-        fileOutputStream.write(textToSave.getBytes());
-        fileOutputStream.close();
-        Toast.makeText(getApplicationContext(), "Text Saved", Toast.LENGTH_SHORT).show();
-        inputField.setText("");
-    } catch (IOException e){
-        e.printStackTrace();
-    }
-}
-
-public void readFile(){
-    try {
-        FileInputStream fileInputStream = openFileInput("BCA.txt");
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fileInputStream));
-        StringBuilder stringBuffer = new StringBuilder();
-        String lines;
-        while ((lines = bufferedReader.readLine()) != null){
-            stringBuffer.append(lines).append("\n");
-        }
-        displayText.setText(stringBuffer.toString());
-    } catch (IOException e) {
-        e.printStackTrace();
-    }
-}
-  </pre>
-
-  <h2>Program 10: Send and Receive SMS</h2>
-  <pre>
-public void sendMessage(View view) {
-    String phoneNumber = editTextPhoneNumber.getText().toString().trim();
-    String message = editTextMessage.getText().toString();
-    if (phoneNumber.isEmpty()) {
-        Toast.makeText(this, "Please enter a valid phone number", Toast.LENGTH_SHORT).show();
-        return;
-    }
-    try {
-        SmsManager smsManager = SmsManager.getDefault();
-        smsManager.sendTextMessage(phoneNumber, null, message, null, null);
-        Toast.makeText(this, "Message sent", Toast.LENGTH_SHORT).show();
-    } catch (Exception e) {
-        Toast.makeText(this, "Failed to send message", Toast.LENGTH_SHORT).show();
-        e.printStackTrace();
-    }
-}
-
-private final BroadcastReceiver smsReceiver = new BroadcastReceiver() {
-    @Override
-    public void onReceive(Context context, Intent intent) {
-        Bundle bundle = intent.getExtras();
-        if (bundle != null) {
-            Object[] pdus = (Object[]) bundle.get("pdus");
-            if (pdus != null) {
-                for (Object pdu : pdus) {
-                    SmsMessage smsMessage = SmsMessage.createFromPdu((byte[]) pdu);
-                    String senderPhoneNumber = smsMessage.getDisplayOriginatingAddress();
-                    String messageBody = smsMessage.getMessageBody();
-                    textViewReceivedMessages.append("From: " + senderPhoneNumber + "\n");
-                    textViewReceivedMessages.append("Message: " + messageBody + "\n\n");
-                }
-            }
-        }
-    }
-};
-  </pre>
-
+  <h1>Welcome to My Program Collection</h1>
+  <a href="index.html" class="button">View MAD Programs</a>
+  <a href="ml_programs.html" class="button">View ML Programs</a>
 </body>
 </html>
