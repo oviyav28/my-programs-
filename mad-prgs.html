@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MAD Lab Programs – Oviya V</title>
+  <style>
+    body { font-family: monospace; background-color: #fff; color: #000; padding: 20px; }
+    h1 { font-size: 28px; margin-bottom: 5px; }
+    h2 { font-size: 20px; margin-top: 40px; margin-bottom: 10px; }
+    pre { background-color: #f4f4f4; padding: 10px; overflow-x: auto; }
+    .section { margin-bottom: 40px; }
+  </style>
+</head>
+<body>
+  <h1>MAD Lab Programs</h1>
+  <p>Submitted by: <strong>Oviya V</strong></p>
+
+  <!-- Programs 1 to 10 (full content added here) -->
+  <!-- ✅ Including XML + Java + Manifest where applicable -->
+
+  <!-- [Programs 1 to 10 inserted from previous versions] -->
+  <!-- This version will now include ALL programs for download -->
+
+  <!-- Program 1 – Hello World (XML) -->
+<div class="section">
+  <h2>Program 1 – Hello World (XML)</h2>
+  <pre>&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="20dp"&gt;
+
+    &lt;TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!"
+        android:textSize="24sp" /&gt;
+&lt;/LinearLayout&gt;</pre>
+
+  <h2>Program 1 – Hello World (Java)</h2>
+  <pre>package com.example.helloworld;
+
+import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+}</pre>
+</div>
+
+<!-- Program 2 – Implicit & Explicit Intent (XML) -->
+<div class="section">
+  <h2>Program 2 – Implicit & Explicit Intent (XML)</h2>
+  <pre>&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"&gt;
+
+    &lt;Button
+        android:id="@+id/btnExplicit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Explicit Intent" /&gt;
+
+    &lt;Button
+        android:id="@+id/btnImplicit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Implicit Intent" /&gt;
+&lt;/LinearLayout&gt;</pre>
+
+  <h2>Program 2 – Implicit & Explicit Intent (Java)</h2>
+  <pre>package com.example.intents;
+
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    Button btnExplicit, btnImplicit;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        btnExplicit = findViewById(R.id.btnExplicit);
+        btnImplicit = findViewById(R.id.btnImplicit);
+
+        btnExplicit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, SecondActivity.class);
+                startActivity(i);
+            }
+        });
+
+        btnImplicit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("https://www.google.com"));
+                startActivity(intent);
+            }
+        });
+    }
+}</pre>
+</div>
+
+<!-- Program 3 – Orientation Change -->
+<div class="section">
+  <h2>Program 3 – Orientation Change (Java)</h2>
+  <pre>package com.example.orientationchange;
+
+import android.os.Bundle;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    TextView textView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        textView = findViewById(R.id.textView);
+        textView.setText("Current Orientation: " + getResources().getConfiguration().orientation);
+    }
+}</pre>
+</div>
+
+<!-- Program 4 – Login UI -->
+<div class="section">
+  <h2>Program 4 – Login UI (XML)</h2>
+  <pre>&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:gravity="center"&gt;
+
+    &lt;EditText
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Username" /&gt;
+
+    &lt;EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:inputType="textPassword" /&gt;
+
+    &lt;Button
+        android:id="@+id/login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login" /&gt;
+&lt;/LinearLayout&gt;</pre>
+
+  <h2>Program 4 – Login UI (Java)</h2>
+  <pre>package com.example.loginui;
+
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    EditText username, password;
+    Button login;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        username = findViewById(R.id.username);
+        password = findViewById(R.id.password);
+        login = findViewById(R.id.login);
+
+        login.setOnClickListener(v -> {
+            String user = username.getText().toString();
+            String pass = password.getText().toString();
+            if (user.equals("admin") && pass.equals("admin")) {
+                Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+}</pre>
+</div>
+
+<!-- Program 5 – Splash Screen (XML) -->
+<div class="section">
+  <h2>Program 5 – Splash Screen (XML)</h2>
+  <pre>&lt;RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"&gt;
+
+    &lt;ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/logo" /&gt;
+&lt;/RelativeLayout&gt;</pre>
+
+  <h2>Program 5 – Splash Screen (Java)</h2>
+  <pre>package com.example.splashscreen;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class SplashActivity extends AppCompatActivity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_splash);
+
+        new Handler().postDelayed(() -> {
+            Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }, 3000); // 3 seconds
+    }
+}</pre>
+</div>
+
+<!-- Program 6 – User Info Form (XML) -->
+<div class="section">
+  <h2>Program 6 – User Info Form (XML)</h2>
+  <pre>&lt;ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"&gt;
+
+    &lt;LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp"&gt;
+
+        &lt;EditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Name" /&gt;
+
+        &lt;EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email" /&gt;
+
+        &lt;EditText
+            android:id="@+id/phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Phone Number"
+            android:inputType="phone" /&gt;
+
+        &lt;Button
+            android:id="@+id/submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Submit" /&gt;
+    &lt;/LinearLayout&gt;
+&lt;/ScrollView&gt;</pre>
+
+  <h2>Program 6 – User Info Form (Java)</h2>
+  <pre>package com.example.userinfoform;
+
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    EditText name, email, phone;
+    Button submit;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        name = findViewById(R.id.name);
+        email = findViewById(R.id.email);
+        phone = findViewById(R.id.phone);
+        submit = findViewById(R.id.submit);
+
+        submit.setOnClickListener(v -> {
+            String info = "Name: " + name.getText().toString() + "
+" +
+                  "Email: " + email.getText().toString() + "
+" +
+                  "Phone: " + phone.getText().toString();
+            Toast.makeText(this, info, Toast.LENGTH_LONG).show();
+        });
+    }
+}</pre>
+</div>
+
+<!-- Program 7 – Menu App (XML) -->
+<div class="section">
+  <h2>Program 7 – Menu App (XML)</h2>
+  <pre>&lt;menu xmlns:android="http://schemas.android.com/apk/res/android"&gt;
+    &lt;item
+        android:id="@+id/menu_home"
+        android:title="Home" /&gt;
+    &lt;item
+        android:id="@+id/menu_settings"
+        android:title="Settings" /&gt;
+    &lt;item
+        android:id="@+id/menu_about"
+        android:title="About" /&gt;
+&lt;/menu&gt;</pre>
+
+  <h2>Program 7 – Menu App (Java)</h2>
+  <pre>package com.example.menuapp;
+
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_home:
+                Toast.makeText(this, "Home selected", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.menu_settings:
+                Toast.makeText(this, "Settings selected", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.menu_about:
+                Toast.makeText(this, "About selected", Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+}</pre>
+</div>
+
+<!-- Program 8 – Read/Write Local File (Java) -->
+<div class="section">
+  <h2>Program 8 – Read/Write Local File (Java)</h2>
+  <pre>package com.example.readwritefile;
+
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+
+public class MainActivity extends AppCompatActivity {
+    EditText editText;
+    Button saveButton, loadButton;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        editText = findViewById(R.id.editText);
+        saveButton = findViewById(R.id.saveButton);
+        loadButton = findViewById(R.id.loadButton);
+
+        saveButton.setOnClickListener(v -> {
+            String text = editText.getText().toString();
+            try {
+                FileOutputStream fos = openFileOutput("example.txt", MODE_PRIVATE);
+                fos.write(text.getBytes());
+                fos.close();
+                Toast.makeText(this, "Saved", Toast.LENGTH_SHORT).show();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+
+        loadButton.setOnClickListener(v -> {
+            try {
+                FileInputStream fis = openFileInput("example.txt");
+                byte[] bytes = new byte[fis.available()];
+                fis.read(bytes);
+                fis.close();
+                String text = new String(bytes);
+                editText.setText(text);
+                Toast.makeText(this, "Loaded", Toast.LENGTH_SHORT).show();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+    }
+}</pre>
+</div>
+
+<!-- Program 9 – Send Email (XML) -->
+<div class="section">
+  <h2>Program 9 – Send Email (XML)</h2>
+  <pre>&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"&gt;
+
+    &lt;EditText
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Recipient Email" /&gt;
+
+    &lt;EditText
+        android:id="@+id/subject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Subject" /&gt;
+
+    &lt;EditText
+        android:id="@+id/message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Message" /&gt;
+
+    &lt;Button
+        android:id="@+id/send"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Send Email" /&gt;
+&lt;/LinearLayout&gt;</pre>
+
+  <h2>Program 9 – Send Email (Java)</h2>
+  <pre>package com.example.sendemail;
+
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    EditText email, subject, message;
+    Button send;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        email = findViewById(R.id.email);
+        subject = findViewById(R.id.subject);
+        message = findViewById(R.id.message);
+        send = findViewById(R.id.send);
+
+        send.setOnClickListener(v -> {
+            String recipient = email.getText().toString();
+            String subjectText = subject.getText().toString();
+            String messageText = message.getText().toString();
+
+            Intent intent = new Intent(Intent.ACTION_SENDTO);
+            intent.setData(Uri.parse("mailto:"));
+            intent.putExtra(Intent.EXTRA_EMAIL, new String[]{recipient});
+            intent.putExtra(Intent.EXTRA_SUBJECT, subjectText);
+            intent.putExtra(Intent.EXTRA_TEXT, messageText);
+
+            if (intent.resolveActivity(getPackageManager()) != null) {
+                startActivity(intent);
+            }
+        });
+    }
+}</pre>
+</div>
+
+<!-- Program 10 – Login Success/Fail with Alert (Java) -->
+<div class="section">
+  <h2>Program 10 – Login Success/Fail with Alert (Java)</h2>
+  <pre>package com.example.loginalert;
+
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    EditText username, password;
+    Button login;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        username = findViewById(R.id.username);
+        password = findViewById(R.id.password);
+        login = findViewById(R.id.login);
+
+        login.setOnClickListener(v -> {
+            String user = username.getText().toString();
+            String pass = password.getText().toString();
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            if (user.equals("admin") && pass.equals("admin")) {
+                builder.setTitle("Login Success")
+                       .setMessage("Welcome, Admin!")
+                       .setPositiveButton("OK", null);
+            } else {
+                builder.setTitle("Login Failed")
+                       .setMessage("Invalid credentials. Please try again.")
+                       .setNegativeButton("Retry", null);
+            }
+            builder.show();
+        });
+    }
+}</pre>
+</div>
+
+  <!-- Program 8 to 10 already present -->
+
+</body>
+</html>
