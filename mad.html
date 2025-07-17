@@ -1,0 +1,937 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Complete MAD Lab Programs – Oviya V</title>
+  <style>
+    body { font-family: monospace; background-color: #fff; color: #000; padding: 20px; }
+    h1 { font-size: 28px; margin-bottom: 5px; }
+    h2 { font-size: 20px; margin-top: 40px; margin-bottom: 10px; }
+    pre { background-color: #f4f4f4; padding: 10px; overflow-x: auto; }
+    .section { margin-bottom: 40px; }
+    hr { margin-top: 60px; margin-bottom: 60px; }
+  </style>
+</head>
+<body>
+  <h1>MAD Lab Programs</h1>
+  <p>Submitted by: <strong>Oviya V</strong></p>
+<hr>
+<div class='section'>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MAD Lab Programs – Oviya V</title>
+  <style>
+    body { font-family: monospace; background-color: #fff; color: #000; padding: 20px; }
+    h1 { font-size: 28px; margin-bottom: 5px; }
+    h2 { font-size: 20px; margin-top: 40px; margin-bottom: 10px; }
+    pre { background-color: #f4f4f4; padding: 10px; overflow-x: auto; }
+    .section { margin-bottom: 40px; }
+  </style>
+</head>
+<body>
+  <h1>MAD Lab Programs</h1>
+  <p>Submitted by: <strong>Oviya V</strong></p>
+
+  <!-- Program 2 – Implicit & Explicit Intent -->
+  <div class="section">
+    <h2>Program 2 – Implicit & Explicit Intent (XML)</h2>
+    <pre>&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"&gt;
+
+    &lt;Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/exp"
+        android:text="Explicit Intent"
+        android:layout_gravity="center" /&gt;
+
+    &lt;Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imp"
+        android:text="Implicit Intent"
+        android:layout_gravity="center" /&gt;
+
+&lt;/LinearLayout&gt;</pre>
+
+    <h2>Program 2 – Implicit & Explicit Intent (Java)</h2>
+    <pre>package com.example.intent;
+
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        Button fariya = findViewById(R.id.exp);
+        Button umme = findViewById(R.id.imp);
+
+        fariya.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent rubeena = new Intent(MainActivity.this, ExplicitActivity2.class);
+                startActivity(rubeena);
+            }
+        });
+
+        umme.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri url = Uri.parse("https://www.google.com");
+                Intent arshiya = new Intent(Intent.ACTION_VIEW, url);
+                startActivity(arshiya);
+            }
+        });
+    }
+}</pre>
+
+    <h2>Explicit Activity Layout (XML)</h2>
+    <pre>&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ExplicitActivity2"&gt;
+
+    &lt;TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:id="@+id/textview"
+        android:text="Welcome to Explicit Activity" /&gt;
+
+    &lt;Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bck"
+        android:text="Back" /&gt;
+&lt;/LinearLayout&gt;</pre>
+
+    <h2>ExplicitActivity2.java</h2>
+    <pre>package com.example.intent;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class ExplicitActivity2 extends AppCompatActivity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_explicit2);
+
+        Button safiya = findViewById(R.id.bck);
+        safiya.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent saba = new Intent(ExplicitActivity2.this, MainActivity.class);
+                startActivity(saba);
+            }
+        });
+    }
+}</pre>
+  </div>
+
+  <!-- Program 3 – Orientation Change -->
+  <div class="section">
+    <h2>Program 3 – Orientation Change (XML)</h2>
+    <pre>&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"&gt;
+
+    &lt;Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button1"
+        android:text="Landscape" /&gt;
+
+    &lt;Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button2"
+        android:text="Portrait" /&gt;
+&lt;/LinearLayout&gt;</pre>
+
+    <h2>Program 3 – Orientation Change (Java)</h2>
+    <pre>package com.example.orientation;
+
+import android.content.pm.ActivityInfo;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        Button lan = findViewById(R.id.button1);
+        Button por = findViewById(R.id.button2);
+
+        lan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+                Toast.makeText(MainActivity.this, "Landscape", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        por.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+                Toast.makeText(MainActivity.this, "Portrait", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+}</pre>
+  </div>
+
+  <!-- Program 4 – Login UI -->
+  <div class="section">
+    <h2>Program 4 – Login UI (XML)</h2>
+    <pre>&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"&gt;
+
+    &lt;TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login Page" /&gt;
+
+    &lt;EditText
+        android:id="@+id/user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Username"
+        android:inputType="text" /&gt;
+
+    &lt;EditText
+        android:id="@+id/Password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:inputType="numberPassword" /&gt;
+
+    &lt;Button
+        android:id="@+id/log"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Login" /&gt;
+&lt;/LinearLayout&gt;</pre>
+
+    <h2>Program 4 – Login UI (Java)</h2>
+    <pre>package com.example.login;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        EditText user = findViewById(R.id.user);
+        EditText password = findViewById(R.id.Password);
+        Button log = findViewById(R.id.log);
+
+        log.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String us = user.getText().toString().trim();
+                String pa = password.getText().toString().trim();
+
+                if (us.equals("safiya") && pa.equals("123")) {
+                    Toast.makeText(MainActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(MainActivity.this, "Login Unsuccessful", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+}</pre>
+  </div>
+</body>
+</html>
+
+</div>
+<hr>
+<div class='section'>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MAD Lab Programs – Oviya V</title>
+  <style>
+    body { font-family: monospace; background-color: #fff; color: #000; padding: 20px; }
+    h1 { font-size: 28px; margin-bottom: 5px; }
+    h2 { font-size: 20px; margin-top: 40px; margin-bottom: 10px; }
+    pre { background-color: #f4f4f4; padding: 10px; overflow-x: auto; }
+    .section { margin-bottom: 40px; }
+  </style>
+</head>
+<body>
+  <h1>MAD Lab Programs</h1>
+  <p>Submitted by: <strong>Oviya V</strong></p>
+
+  <!-- Programs 1 to 6 already included -->
+
+  <!-- Program 7 – Menu App -->
+  <div class="section">
+    <h2>Program 7 – Menu App (menu.xml)</h2>
+    <pre>&lt;menu xmlns:android="http://schemas.android.com/apk/res/android"&gt;
+    &lt;item android:id="@+id/php" android:title="@string/php"/&gt;
+    &lt;item android:id="@+id/java" android:title="@string/java"/&gt;
+    &lt;item android:id="@+id/csharp" android:title="@string/c"/&gt;
+&lt;/menu&gt;</pre>
+
+    <h2>Program 7 – Menu App (AndroidManifest.xml)</h2>
+    <pre>&lt;manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"&gt;
+
+    &lt;application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.Light"
+        tools:targetApi="31"&gt;
+        &lt;activity
+            android:name=".MainActivity"
+            android:exported="true"&gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name="android.intent.action.MAIN" /&gt;
+                &lt;category android:name="android.intent.category.LAUNCHER" /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/activity&gt;
+    &lt;/application&gt;
+
+&lt;/manifest&gt;</pre>
+
+    <h2>Program 7 – Menu App (Java)</h2>
+    <pre>package com.example.menu;
+
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.Toast;
+
+import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_main);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(@NonNull Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menus, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.php) {
+            Toast.makeText(this, "php page", Toast.LENGTH_SHORT).show();
+        } else if (item.getItemId() == R.id.java) {
+            Toast.makeText(this, "javapage", Toast.LENGTH_SHORT).show();
+        } else if (item.getItemId() == R.id.csharp) {
+            Toast.makeText(this, "c# page", Toast.LENGTH_SHORT).show();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+}</pre>
+  </div>
+
+  <!-- Program 8 – Send Email -->
+  <div class="section">
+    <h2>Program 8 – Send Email (XML)</h2>
+    <pre>&lt;RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"&gt;
+
+    &lt;EditText android:id="@+id/editTextTo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/to" /&gt;
+
+    &lt;EditText android:id="@+id/editTextSubject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextTo"
+        android:hint="@string/subject" /&gt;
+
+    &lt;EditText android:id="@+id/editTextMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextSubject"
+        android:hint="@string/message" /&gt;
+
+    &lt;Button android:id="@+id/buttonSend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextMessage"
+        android:text="@string/send" /&gt;
+&lt;/RelativeLayout&gt;</pre>
+
+    <h2>Program 8 – Send Email (Java)</h2>
+    <pre>package com.example.email;
+
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    EditText editTextTo, editTextSubject, editTextMessage;
+    Button buttonSend;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        editTextTo = findViewById(R.id.editTextTo);
+        editTextSubject = findViewById(R.id.editTextSubject);
+        editTextMessage = findViewById(R.id.editTextMessage);
+        buttonSend = findViewById(R.id.buttonSend);
+
+        buttonSend.setOnClickListener(v -> sendEmail());
+    }
+
+    @SuppressLint("QueryPermissionsNeeded")
+    private void sendEmail() {
+        String to = editTextTo.getText().toString().trim();
+        String subject = editTextSubject.getText().toString().trim();
+        String message = editTextMessage.getText().toString().trim();
+
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setData(Uri.parse("mailto:" + Uri.encode(to)));
+        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        intent.putExtra(Intent.EXTRA_TEXT, message);
+
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(Intent.createChooser(intent, "choose email client"));
+        }
+    }
+}</pre>
+  </div>
+</body>
+</html>
+
+</div>
+<hr>
+<div class='section'>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MAD Lab Programs – Oviya V</title>
+  <style>
+    body { font-family: monospace; background-color: #fff; color: #000; padding: 20px; }
+    h1 { font-size: 28px; margin-bottom: 5px; }
+    h2 { font-size: 20px; margin-top: 40px; margin-bottom: 10px; }
+    pre { background-color: #f4f4f4; padding: 10px; overflow-x: auto; }
+    .section { margin-bottom: 40px; }
+  </style>
+</head>
+<body>
+  <h1>MAD Lab Programs</h1>
+  <p>Submitted by: <strong>Oviya V</strong></p>
+
+  <!-- Programs 5 – Logo to Pop -->
+  <div class="section">
+    <h2>Program 5 – Splash Screen (Logo Pop) (activity_main.xml)</h2>
+    <pre>&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"&gt;
+
+    &lt;ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/imgview"
+        app:srcCompat="@drawable/download" /&gt;
+&lt;/LinearLayout&gt;</pre>
+
+    <h2>Program 5 – Splash Screen (Logo Pop) (MainActivity.java)</h2>
+    <pre>package com.example.logopop;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.view.WindowManager;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    private static final int SPLASH_SCREEN_TIME_OUT = 3000; // 3 seconds
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        getWindow().setFlags(
+                WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        new Handler().postDelayed(() -> {
+            Intent i = new Intent(MainActivity.this, SecondActivity.class);
+            startActivity(i);
+            finish();
+        }, SPLASH_SCREEN_TIME_OUT);
+    }
+}</pre>
+
+    <h2>Program 5 – Splash Screen (Logo Pop) (activity_second.xml)</h2>
+    <pre>&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SecondActivity"&gt;
+
+    &lt;TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textview"
+        android:text="welcome to homepage" /&gt;
+&lt;/LinearLayout&gt;</pre>
+
+    <h2>Program 5 – Splash Screen (Logo Pop) (SecondActivity.java)</h2>
+    <pre>package com.example.logopop;
+
+import android.os.Bundle;
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+
+public class SecondActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_second);
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
+    }
+}</pre>
+  </div>
+
+  <!-- Program 6 – User Info Form -->
+  <div class="section">
+    <h2>Program 6 – User Info Form (activity_main.xml)</h2>
+    <pre>&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"&gt;
+
+    &lt;TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/user_information"
+        android:textSize="30sp"
+        android:textStyle="bold" /&gt;
+
+    &lt;ToggleButton
+        android:id="@+id/toggleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textOn="@string/active"
+        android:textOff="@string/inactive" /&gt;
+
+    &lt;View
+        android:layout_width="wrap_content"
+        android:layout_height="40dp" /&gt;
+
+    &lt;LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"&gt;
+
+        &lt;LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"&gt;
+            &lt;TextView android:text="@string/name" />
+            &lt;EditText android:id="@+id/name" android:layout_width="match_parent" android:layout_height="60dp" />
+        &lt;/LinearLayout&gt;
+
+        &lt;LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal"&gt;
+            &lt;TextView android:text="@string/email" />
+            &lt;EditText android:id="@+id/email" android:layout_width="match_parent" android:layout_height="60dp" android:inputType="textEmailAddress" />
+        &lt;/LinearLayout&gt;
+
+        &lt;LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal"&gt;
+            &lt;TextView android:text="@string/gender" />
+            &lt;RadioGroup android:id="@+id/gender" android:orientation="horizontal"&gt;
+                &lt;RadioButton android:id="@+id/male" android:text="@string/male" />
+                &lt;RadioButton android:id="@+id/female" android:text="@string/female" />
+            &lt;/RadioGroup&gt;
+        &lt;/LinearLayout&gt;
+
+        &lt;LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal"&gt;
+            &lt;TextView android:text="@string/country" />
+            &lt;Spinner android:id="@+id/country" android:layout_width="match_parent" android:layout_height="60dp" /&gt;
+        &lt;/LinearLayout&gt;
+    &lt;/LinearLayout&gt;
+
+    &lt;Button
+        android:id="@+id/submit"
+        android:layout_width="210dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="submit" /&gt;
+&lt;/LinearLayout&gt;</pre>
+
+    <h2>Program 6 – User Info Form (MainActivity.java)</h2>
+    <pre>package com.example.userinfo;
+
+import android.content.Context;
+import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        Button sub = findViewById(R.id.submit);
+        sub.setOnClickListener(v -> showMessage(MainActivity.this, "User information", "successfully completed"));
+
+        String[] item = new String[]{"India", "China", "Pakistan", "America", "England"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        Spinner spinner = findViewById(R.id.country);
+        spinner.setAdapter(adapter);
+    }
+
+    public void showMessage(Context con, String t, String msg) {
+        Toast.makeText(con, msg, Toast.LENGTH_SHORT).show();
+    }
+}</pre>
+  </div>
+</body>
+</html>
+
+</div>
+<hr>
+<div class='section'>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Android Programs 9 and 10</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        h2 {
+            color: #0056b3;
+        }
+        pre {
+            background-color: #e9ecef;
+            padding: 15px;
+            overflow-x: auto;
+            border-left: 5px solid #007bff;
+        }
+        code {
+            font-family: Consolas, monospace;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Program 9: Registration Form with Multiple Fields</h2>
+
+    <h3>activity_main.xml</h3>
+    <pre><code>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"&gt;
+
+    &lt;LinearLayout
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"&gt;
+
+        &lt;EditText
+            android:id="@+id/etName"
+            android:hint="Name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" /&gt;
+
+        &lt;EditText
+            android:id="@+id/etEmail"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" /&gt;
+
+        &lt;EditText
+            android:id="@+id/etPhone"
+            android:hint="Phone"
+            android:inputType="phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" /&gt;
+
+        &lt;EditText
+            android:id="@+id/etPassword"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" /&gt;
+
+        &lt;Button
+            android:id="@+id/btnRegister"
+            android:text="Register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp" /&gt;
+
+        &lt;TextView
+            android:id="@+id/tvResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:layout_marginTop="20dp"/ &gt;
+
+    &lt;/LinearLayout&gt;
+&lt;/ScrollView&gt;</code></pre>
+
+    <h3>MainActivity.java</h3>
+    <pre><code>package com.example.registrationform;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    EditText etName, etEmail, etPhone, etPassword;
+    Button btnRegister;
+    TextView tvResult;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        etName = findViewById(R.id.etName);
+        etEmail = findViewById(R.id.etEmail);
+        etPhone = findViewById(R.id.etPhone);
+        etPassword = findViewById(R.id.etPassword);
+        btnRegister = findViewById(R.id.btnRegister);
+        tvResult = findViewById(R.id.tvResult);
+
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String result = "Name: " + etName.getText().toString() + "\n"
+                        + "Email: " + etEmail.getText().toString() + "\n"
+                        + "Phone: " + etPhone.getText().toString() + "\n"
+                        + "Password: " + etPassword.getText().toString();
+                tvResult.setText(result);
+            }
+        });
+    }
+}</code></pre>
+
+    <hr>
+
+    <h2>Program 10: Simple Login Form (Validation Example)</h2>
+
+    <h3>activity_main.xml</h3>
+    <pre><code>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"&gt;
+
+    &lt;EditText
+        android:id="@+id/etUsername"
+        android:hint="Username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" /&gt;
+
+    &lt;EditText
+        android:id="@+id/etPassword"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" /&gt;
+
+    &lt;Button
+        android:id="@+id/btnLogin"
+        android:text="Login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp" /&gt;
+
+    &lt;TextView
+        android:id="@+id/tvMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FF0000"
+        android:layout_marginTop="20dp"/ &gt;
+&lt;/LinearLayout&gt;</code></pre>
+
+    <h3>MainActivity.java</h3>
+    <pre><code>package com.example.loginform;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    EditText etUsername, etPassword;
+    Button btnLogin;
+    TextView tvMessage;
+
+    final String validUsername = "admin";
+    final String validPassword = "1234";
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        etUsername = findViewById(R.id.etUsername);
+        etPassword = findViewById(R.id.etPassword);
+        btnLogin = findViewById(R.id.btnLogin);
+        tvMessage = findViewById(R.id.tvMessage);
+
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String user = etUsername.getText().toString();
+                String pass = etPassword.getText().toString();
+
+                if(user.equals(validUsername) && pass.equals(validPassword)) {
+                    tvMessage.setText("Login Successful!");
+                } else {
+                    tvMessage.setText("Invalid Username or Password");
+                }
+            }
+        });
+    }
+}</code></pre>
+
+</body>
+</html>
+
+</div>
+
+</body>
+</html>
